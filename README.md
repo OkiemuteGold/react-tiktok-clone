@@ -36,3 +36,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## SANITY INSTALLATION with Coupon
+
+npm install -g @sanity/cli
+
+`sanity init --coupon javascriptmastery2022`
+
+If already set up (coupon: https://www.sanity.io/freecodecamp)
+`sanity init --project 24m7nl70 --dataset boosted-free-2021-12-08`
