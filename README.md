@@ -37,6 +37,11 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+
+## ALL PROJECT CODES
+
+`https://gist.github.com/adrianhajdin/a844254aa10510d62ecafc21d0c3714c`
+
 ## SANITY INSTALLATION with Coupon
 
 npm install -g @sanity/cli
@@ -49,3 +54,17 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 ## Installing Dependencies
 
 `npm install @sanity/client react-google-login react-icons axios uuidv4 zustand --legacy-peer-deps`
+
+
+## Installing tailwindcss
+
+`npm install -D tailwindcss postcss autoprefixer --legacy-peer-deps`
+
+`npx tailwindcss init -p`
+
+Reference: https://tailwindcss.com/docs/guides/nextjs
+
+
+## VS CODE ICONS
+
+`https://codevoweb.com/top-10-best-vs-code-extensions-for-react-developers/`
