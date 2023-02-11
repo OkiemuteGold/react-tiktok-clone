@@ -45,3 +45,7 @@ npm install -g @sanity/cli
 
 If already set up (coupon: https://www.sanity.io/freecodecamp)
 `sanity init --project 24m7nl70 --dataset boosted-free-2021-12-08`
+
+## Installing Dependencies
+
+`npm install @sanity/client react-google-login react-icons axios uuidv4 zustand --legacy-peer-deps`
