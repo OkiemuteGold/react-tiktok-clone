@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 // components
 import Discover from './Discover';
-import SuggestedAccount from './SuggestedAccount';
+import SuggestedAccounts from './SuggestedAccounts';
 import Footer from './Footer';
 
 const Sidebar = () => {
@@ -76,7 +76,7 @@ const Sidebar = () => {
                     )}
 
                     <Discover />
-                    <SuggestedAccount />
+                    <SuggestedAccounts />
                     <Footer />
                 </div>
             )}

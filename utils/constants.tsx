@@ -4,7 +4,7 @@ import { FaPaw, FaMedal, FaGamepad } from 'react-icons/fa';
 
 export const topics = [
   {
-    name: 'development',
+    name: 'coding',
     icon: <BsCode />,
   },
   {
@@ -38,5 +38,7 @@ export const topics = [
 ];
 
 export const footerList1 = ['About', 'Newsroom', 'Store', 'Contact', 'Carrers', 'ByteDance', 'Creator Directory']
-export const footerList2 = [ 'TikTik for Good','Advertise','Developers','Transparency','TikTik Rewards' ]
-export const footerList3 = [ 'Help', 'Safety', 'Terms', 'Privacy', 'Creator Portal', 'Community Guidelines' ]
+
+export const footerList2 = ['TikTik for Good', 'Advertise', 'Developers', 'Transparency', 'TikTik Rewards']
+
+export const footerList3 = ['Help', 'Safety', 'Terms', 'Privacy', 'Creator Portal', 'Community Guidelines']

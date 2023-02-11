@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SuggestedAccount = () => {
+const SuggestedAccounts = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const SuggestedAccount = () => {
     )
 }
 
-export default SuggestedAccount
+export default SuggestedAccounts
