@@ -7,6 +7,11 @@ import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { ImCancelCircle } from "react-icons/im";
 import { useState } from 'react';
 
+// components
+import Discover from './Discover';
+import SuggestedAccount from './SuggestedAccount';
+import Footer from './Footer';
+
 const Sidebar = () => {
     const [showSidebar, setShowSidebar] = useState(true);
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -15,14 +20,17 @@ const Sidebar = () => {
         setShowSidebar(prevState => !prevState);
     };
 
-    const normalLink = "flex items-center justify-center xl:justify-start gap-3 p-3 text-[#f51997] hover:bg-primary rounded font-semibold cursor-pointer"
+    const normalLink = "flex items-center justify-center xl:justify-start gap-3 p-3 text-[#f51997] hover:bg-primary rounded font-semibold cursor-pointer";
+
+    const googleLoginButtonStyle = "cursor-pointer text-lg bg-white text-[#f51997] border-[1px] border-[#f51997] hover:bg-[#f51997] hover:text-white outline-none rounded-md font-semibold px-6 p-3 mt-3 w-full"
 
     return (
         <div>
-            <div className="block xl:hidden m-2 ml-4 mt-3 text-xl" onClick={toggleSidebar}>
-                {
-                    showSidebar ? <ImCancelCircle /> : <AiOutlineMenu />
-                }
+            <div
+                className="block xl:hidden m-2 ml-4 mt-3 text-xl"
+                onClick={toggleSidebar}
+            >
+                {showSidebar ? <ImCancelCircle /> : <AiOutlineMenu />}
             </div>
 
             {showSidebar && (
@@ -34,7 +42,9 @@ const Sidebar = () => {
                                     <AiFillHome />
                                 </p>
 
-                                <span className="text-xl hidden xl:block">For You</span>
+                                <span className="text-xl hidden xl:block">
+                                    For You
+                                </span>
                             </div>
                         </Link>
                     </div>
@@ -42,11 +52,21 @@ const Sidebar = () => {
                     {!isUserLoggedIn && (
                         <div className="px-2 py-4 hidden xl:block">
                             <p className="text-gray-400">
-                                Log in to like and comment on videos</p>
+                                Log in to like and comment on videos
+                            </p>
 
                             <div className="pr-4">
                                 <GoogleLogin
                                     clientId=""
+                                    render={(renderProps) => (
+                                        <button
+                                            onClick={renderProps.onClick}
+                                            disabled={renderProps.disabled}
+                                            className={googleLoginButtonStyle}
+                                        >
+                                            Login
+                                        </button>
+                                    )}
                                     onSuccess={() => { }}
                                     onFailure={() => { }}
                                     cookiePolicy="single_host_origin"
@@ -54,6 +74,10 @@ const Sidebar = () => {
                             </div>
                         </div>
                     )}
+
+                    <Discover />
+                    <SuggestedAccount />
+                    <Footer />
                 </div>
             )}
         </div>
