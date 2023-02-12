@@ -1,10 +1,15 @@
 import Head from "next/head";
 import axios from "axios";
+import { Video } from "@/types";
 // import { Inter } from "@next/font/google";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ videos }) {
+interface IProps {
+    videos: Video[]
+}
+
+export default function Home({ videos }: IProps) {
     console.log(videos);
 
     return (
@@ -27,7 +32,7 @@ export const getServerSideProps = async () => {
     const response = await axios.get(`http://localhost:3000/api/post`);
     const { data } = response;
 
-    console.log(response.data);
+    // console.log(response.data);
 
     return {
         props: {
