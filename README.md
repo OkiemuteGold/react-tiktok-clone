@@ -62,7 +62,10 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 
 `npx tailwindcss init -p`
 
-Reference: https://tailwindcss.com/docs/guides/nextjs
+## References:
+
+`https://www.sanity.io/docs/how-queries-work`
+`https://tailwindcss.com/docs/guides/nextjs`
 
 
 ## VS CODE ICONS

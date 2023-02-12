@@ -1,9 +1,12 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
+import axios from "axios";
+// import { Inter } from "@next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ videos }) {
+    console.log(videos);
+
     return (
         <>
             <Head>
@@ -18,4 +21,17 @@ export default function Home() {
             </main>
         </>
     );
+}
+
+export const getServerSideProps = async () => {
+    const response = await axios.get(`http://localhost:3000/api/post`);
+    const { data } = response;
+
+    console.log(response.data);
+
+    return {
+        props: {
+            videos: data
+        }
+    }
 }
