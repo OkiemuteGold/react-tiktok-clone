@@ -1,6 +1,8 @@
 import Head from "next/head";
 import axios from "axios";
 import { Video } from "@/types";
+import VideoCard from "@/components/VideoCard";
+import NoResult from "@/components/NoResult";
 // import { Inter } from "@next/font/google";
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -21,8 +23,16 @@ export default function Home({ videos }: IProps) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
-                <h1 className="text-3xl font-bold underline">Hello world!</h1>
+            <main className="flex flex-col gap-10 h-full videos">
+                {videos.length ? (
+                    videos.map((video: Video) => {
+                        return (
+                            <VideoCard post={video} key={video._id} />
+                        )
+                    })
+                ) : (
+                    <NoResult text={"No videos found"} />
+                )}
             </main>
         </>
     );
