@@ -74,3 +74,51 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 ## VS CODE ICONS
 
 `https://codevoweb.com/top-10-best-vs-code-extensions-for-react-developers/`
+
+
+## How to resolve Error displaying profile image of post author -- post.postedBy.image (using Image - next/image - in VideoCard.tsx)
+
+Error: Invalid src prop (https://avatars.githubusercontent.com/u/66219090?v=4) on `next/image`, hostname "avatars.githubusercontent.com" is not configured under images in your `next.config.js`
+
+See more info to resolve: 
+`https://nextjs.org/docs/messages/next-image-unconfigured-host`
+
+`https://nextjs.org/docs/api-reference/next/image`
+
+`https://nextjs.org/docs/messages/invalid-images-config`
+
+`https://www.sanity.io/plugins/next-sanity-image`
+
+### Add the protocol and hostname in next.config.js:
+
+images: {
+  remotePatterns: [
+    {
+      protocol: 'https',
+      hostname: 'avatars.githubusercontent.com'
+    }
+  ]
+}
+
+You can also add port and pathname to the images.remotePatterns config ..as in below.
+
+image: {
+    remotePatterns: [
+        {
+            protocol: 'https',
+            hostname: 'example.com',
+            port: '',
+            pathname: '/account123/**',
+        },
+    ],
+}
+
+If you are using an older version of Next.js prior to 12.3.0, you can use images.domains instead:
+
+<!-- next.config.js -->
+module.exports = {
+  images: {
+    domains: ['assets.example.com'],
+  },
+}
+
