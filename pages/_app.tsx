@@ -2,6 +2,8 @@ import '@/styles/globals.css'
 import { useState, useEffect } from 'react';
 import type { AppProps } from 'next/app'
 
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 
@@ -17,7 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   }
 
   return (
-    <div>
+    <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}>
       <Navbar />
 
       <div className="flex gap-6 md:gap-20">
@@ -29,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           <Component {...pageProps} />
         </div>
       </div>
-    </div>
+    </GoogleOAuthProvider>
   )
 }
 

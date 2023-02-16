@@ -72,10 +72,13 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 
 `https://www.npmjs.com/package/@adaaugusta/react-google-login`
 
+### OAuth Google
+
 `https://developers.google.com/identity/gsi/web/guides/overview`
 
 `https://www.npmjs.com/package/@react-oauth/google`
 
+`https://console.cloud.google.com/`
 
 ## VS CODE ICONS
 
