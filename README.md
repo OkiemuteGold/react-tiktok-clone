@@ -56,6 +56,8 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 `npm install @sanity/client react-google-login react-icons axios uuidv4 zustand --legacy-peer-deps`
 
 
+`npm i @react-oauth/google jwt-decode`
+
 ## Installing tailwindcss
 
 `npm install -D tailwindcss postcss autoprefixer --legacy-peer-deps`
@@ -69,6 +71,10 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 `https://tailwindcss.com/docs/guides/nextjs`
 
 `https://www.npmjs.com/package/@adaaugusta/react-google-login`
+
+`https://developers.google.com/identity/gsi/web/guides/overview`
+
+`https://www.npmjs.com/package/@react-oauth/google`
 
 
 ## VS CODE ICONS
