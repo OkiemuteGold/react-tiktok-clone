@@ -122,3 +122,8 @@ module.exports = {
   },
 }
 
+## HTML5 Video
+
+`https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video`
+
+`https://developer.chrome.com/blog/play-returns-promise/`
