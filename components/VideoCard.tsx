@@ -50,10 +50,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                                 <Image
                                     src={post.postedBy.image}
                                     alt={`${post.postedBy.userName} profile photo`}
-                                    width={62}
-                                    height={62}
+                                    width={64}
+                                    height={64}
                                     className="rounded-full"
-                                    layout="responsive"
                                 />
                             </span>
                         </Link>

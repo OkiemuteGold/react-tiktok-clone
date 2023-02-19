@@ -70,7 +70,9 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 
 `https://tailwindcss.com/docs/guides/nextjs`
 
-`https://www.npmjs.com/package/@adaaugusta/react-google-login`
+`https://www.npmjs.com/package/@adaaugusta/react-google-login` (--Deprecated)
+
+`https://npmdoc.github.io/node-npmdoc-jwt-decode/build/apidoc.html`
 
 ### OAuth Google
 
@@ -78,7 +80,7 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 
 `https://www.npmjs.com/package/@react-oauth/google`
 
-`https://console.cloud.google.com/`
+`https://console.cloud.google.com/?project=tiktik-378002`
 
 ## VS CODE ICONS
 
