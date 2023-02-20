@@ -37,8 +37,16 @@ const Upload = () => {
     const [category, setCategory] = useState(topics[0].name);
     const [isSavingPost, setIsSavingPost] = useState(false);
 
-    const invalid = !caption || !category || !videoAsset;
-    const [isInvalid] = useState(invalid);
+    const isInvalid = !caption || !category || !videoAsset;
+
+    const { userProfile }: any = useAuthStore();
+    const router = useRouter();
+
+    const clearFields = () => {
+        setCaption("");
+        setCategory("");
+        setVideoAsset(undefined);
+    };
 
     const uploadVideo = (e: any) => {
         setIsLoading(true);
@@ -73,25 +81,38 @@ const Upload = () => {
         }
     };
 
-    const postVideo = () => {
-        const videoObj = {
-            caption: caption,
-            category: category,
-            file: videoAsset
+    const postVideo = async () => {
+        if (caption && videoAsset?._id && category) {
+            setIsSavingPost(true);
+
+            const videoDocument = {
+                _type: "post",
+                caption,
+                topic: category,
+                video: {
+                    _type: "file",
+                    asset: {
+                        _type: "reference",
+                        _ref: videoAsset?._id
+                    }
+                },
+                userId: userProfile?._id,
+                postedBy: {
+                    _type: "postedBy",
+                    _ref: userProfile?._id
+                }
+            }
+
+            const url = "http://localhost:3000";
+            await axios.post(`${url}/api/post`, videoDocument);
+
+            console.log(videoDocument);
+
+            clearFields();
+
+            router.push("/");
         }
-
-        console.log(videoObj);
-
-        setCaption("");
-        setCategory("");
-        setVideoAsset(undefined);
     };
-
-    // useEffect(() => {
-    //     if (!caption || !category || !videoAsset) {
-    //         setIsInvalid(true);
-    //     }
-    // }, []);
 
     return (
         <div className="flex w-full h-full absolute left-0 top-[58px] justify-center bg-[#f8f8f8] md:py-10">
@@ -241,6 +262,7 @@ const Upload = () => {
                     <div className="flex gap-6 mt-10">
                         <button
                             className="outline-none border-2 border-gray-200 text-base font-medium p-2 rounded w-28 lg:w-44"
+                            onClick={clearFields}
                         >
                             Discard
                         </button>
