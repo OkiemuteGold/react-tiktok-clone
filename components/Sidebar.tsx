@@ -14,7 +14,6 @@ import Footer from './Footer';
 
 const Sidebar = () => {
     const [showSidebar, setShowSidebar] = useState(true);
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     const toggleSidebar = () => {
         setShowSidebar(prevState => !prevState);
@@ -48,32 +47,6 @@ const Sidebar = () => {
                             </div>
                         </Link>
                     </div>
-
-                    {!isUserLoggedIn && (
-                        <div className="px-2 py-4 hidden xl:block">
-                            <p className="text-gray-400">
-                                Log in to like and comment on videos
-                            </p>
-
-                            <div className="pr-4">
-                                {/* <GoogleLogin
-                                    clientId=""
-                                    render={(renderProps) => (
-                                        <button
-                                            onClick={renderProps.onClick}
-                                            disabled={renderProps.disabled}
-                                            className={googleLoginButtonStyle}
-                                        >
-                                            Login
-                                        </button>
-                                    )}
-                                    onSuccess={() => { }}
-                                    onFailure={() => { }}
-                                    cookiePolicy="single_host_origin"
-                                /> */}
-                            </div>
-                        </div>
-                    )}
 
                     <Discover />
                     <SuggestedAccounts />
