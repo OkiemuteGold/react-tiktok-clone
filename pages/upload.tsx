@@ -37,6 +37,9 @@ const Upload = () => {
     const [category, setCategory] = useState(topics[0].name);
     const [isSavingPost, setIsSavingPost] = useState(false);
 
+    const invalid = !caption || !category || !videoAsset;
+    const [isInvalid] = useState(invalid);
+
     const uploadVideo = (e: any) => {
         setIsLoading(true);
 
@@ -71,11 +74,23 @@ const Upload = () => {
     };
 
     const postVideo = () => {
-        console.log(caption, category);
+        const videoObj = {
+            caption: caption,
+            category: category,
+            file: videoAsset
+        }
+
+        console.log(videoObj);
+
+        setCaption("");
+        setCategory("");
+        setVideoAsset(undefined);
     };
 
     // useEffect(() => {
-    //     console.log(caption, category)
+    //     if (!caption || !category || !videoAsset) {
+    //         setIsInvalid(true);
+    //     }
     // }, []);
 
     return (
@@ -121,7 +136,7 @@ const Upload = () => {
                                                     src={videoAsset.url}
                                                     controls
                                                     loop
-                                                    className="rounded-xl h-[450px] mt-16 bg-black"
+                                                    className="rounded-xl h-[400px] bg-black"
                                                 ></video>
                                             </div>
                                         ) : (
@@ -232,6 +247,8 @@ const Upload = () => {
 
                         <button
                             className="outline-none bg-[#f51997] text-white text-base font-medium p-2 rounded w-28 lg:w-44"
+                            onClick={postVideo}
+                            disabled={isInvalid}
                         >
                             Post
                         </button>
