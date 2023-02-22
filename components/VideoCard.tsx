@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { Video } from '@/types'
 import { NextPage } from 'next'
 import Image from 'next/image'
@@ -7,6 +7,8 @@ import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsPlay, BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
 
+import VideoButtonsCtas from '@/utils/video-buttons-ctas'
+
 interface IProps {
     post: Video
 }
@@ -14,31 +16,9 @@ interface IProps {
 const VideoCard: NextPage<IProps> = ({ post }) => {
     // console.log(post);
 
+    const { videoRef, isPlaying, isMuted, pausePlayVideo, muteUnmuteVideo } = VideoButtonsCtas();
+
     const [isHovered, setIsHovered] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isMuted, setIsMuted] = useState(false);
-
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    const pausePlayVideo = () => {
-        if (isPlaying) {
-            videoRef.current?.pause();
-            setIsPlaying(false);
-        } else {
-            videoRef.current?.play();
-            setIsPlaying(true);
-        }
-    };
-
-    const muteUnmuteVideo = () => {
-        if (isMuted) {
-            // !videoRef.current?.muted;
-            setIsMuted(false);
-        } else {
-            // videoRef.current?.muted;
-            setIsMuted(true);
-        }
-    };
 
     return (
         <div className="flex flex-col border-b-2 border-gray-200 pb-6">

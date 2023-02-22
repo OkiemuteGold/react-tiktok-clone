@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,40 +12,18 @@ import axios from "axios";
 import { BASE_URL } from "@/utils";
 import { Video } from "@/types";
 
+import VideoButtons from "@/utils/video-buttons-ctas";
+
 interface IProps {
     postDetails: Video
 }
 
 const Detail = ({ postDetails }: IProps) => {
     const [post, setPost] = useState(postDetails);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isMuted, setIsMuted] = useState(false);
 
-    const videoRef = useRef<HTMLVideoElement>(null);
+    const { videoRef, isPlaying, isMuted, pausePlayVideo, muteUnmuteVideo } = VideoButtons();
 
     const buttonStyle = "w-full h-full flex justify-center items-center text-white cursor-pointer hover:scale-90 transition-transform duration-75";
-
-    const pausePlayVideo = () => {
-        if (isPlaying) {
-            videoRef.current?.pause();
-            setIsPlaying(false);
-        } else {
-            videoRef.current?.play();
-            setIsPlaying(true);
-        }
-    };
-
-    const muteUnmuteVideo = () => {
-        console.log(videoRef);
-
-        if (isMuted) {
-            !videoRef.current?.muted;
-            setIsMuted(false);
-        } else {
-            videoRef.current?.muted;
-            setIsMuted(true);
-        }
-    };
 
     if (!post) return null;
 
