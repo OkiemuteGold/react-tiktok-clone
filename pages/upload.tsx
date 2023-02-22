@@ -10,6 +10,7 @@ import { client } from "@/utils/client";
 import { SanityAssetDocument } from "@sanity/client";
 
 import { topics } from "@/utils/constants";
+import { BASE_URL } from "@/utils";
 
 export const GoBackComponent = ({ setStatus }: any) => {
     return (
@@ -103,8 +104,7 @@ const Upload = () => {
                 }
             }
 
-            const url = "http://localhost:3000";
-            await axios.post(`${url}/api/post`, videoDocument);
+            await axios.post(`${BASE_URL}/api/post`, videoDocument);
 
             console.log(videoDocument);
 

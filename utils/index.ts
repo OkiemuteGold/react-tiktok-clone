@@ -1,8 +1,7 @@
 import axios from 'axios';
 // import jwtDecode from 'jwt-decode';
 
-// export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const createOrGetUser = async (response: any, addUser: any) => {
   var base64Url = response.credential.split('.')[1];

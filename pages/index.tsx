@@ -3,6 +3,7 @@ import axios from "axios";
 import { Video } from "@/types";
 import VideoCard from "@/components/VideoCard";
 import NoResult from "@/components/NoResult";
+import { BASE_URL } from "@/utils";
 // import { Inter } from "@next/font/google";
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -39,7 +40,7 @@ export default function Home({ videos }: IProps) {
 }
 
 export const getServerSideProps = async () => {
-    const response = await axios.get(`http://localhost:3000/api/post`);
+    const response = await axios.get(`${BASE_URL}/api/post`);
     const { data } = response;
 
     // console.log(response.data);
