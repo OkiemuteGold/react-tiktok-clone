@@ -12,18 +12,7 @@ import { SanityAssetDocument } from "@sanity/client";
 import { topics } from "@/utils/constants";
 import { BASE_URL } from "@/utils";
 
-export const GoBackComponent = ({ setStatus }: any) => {
-    return (
-        <button
-            type="button"
-            className="flex justify-evenly items-center w-16 mx-auto border-b-2 border-gray-300 hover:border-gray-400"
-            onClick={setStatus}
-        >
-            <FaArrowLeft className="h-3 w-3" />
-            <span>Back</span>
-        </button>
-    );
-};
+import { GoBackBtn, UtilityBtns } from "@/utils/UtilityButtons";
 
 const Upload = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -34,8 +23,10 @@ const Upload = () => {
         message: "",
     });
 
+    const defaultCategory = topics[0].name;
+
     const [caption, setCaption] = useState("");
-    const [category, setCategory] = useState(topics[0].name);
+    const [category, setCategory] = useState(defaultCategory);
     const [isSavingPost, setIsSavingPost] = useState(false);
 
     const isInvalid = !caption || !category || !videoAsset;
@@ -43,9 +34,11 @@ const Upload = () => {
     const { userProfile }: any = useAuthStore();
     const router = useRouter();
 
+    const { CustomButton } = UtilityBtns();
+
     const clearFields = () => {
         setCaption("");
-        setCategory("");
+        setCategory(defaultCategory);
         setVideoAsset(undefined);
     };
 
@@ -139,7 +132,7 @@ const Upload = () => {
                                     Please select a different video.
                                 </p>
 
-                                <GoBackComponent
+                                <GoBackBtn
                                     setStatus={() => {
                                         setWrongFileType(false);
                                     }}
@@ -168,7 +161,7 @@ const Upload = () => {
                                                             {uploadError.message}
                                                         </p>
 
-                                                        <GoBackComponent
+                                                        <GoBackBtn
                                                             setStatus={() => {
                                                                 setUploadError({
                                                                     status: false,
@@ -260,20 +253,22 @@ const Upload = () => {
                     </select>
 
                     <div className="flex gap-6 mt-10">
-                        <button
-                            className="outline-none border-2 border-gray-200 text-base font-medium p-2 rounded w-28 lg:w-44"
+                        <CustomButton
+                            btnType="outline"
+                            className="text-base p-2 w-28 lg:w-44"
                             onClick={clearFields}
                         >
                             Discard
-                        </button>
+                        </CustomButton>
 
-                        <button
-                            className="outline-none bg-[#f51997] text-white text-base font-medium p-2 rounded w-28 lg:w-44"
+                        <CustomButton
+                            btnType="primary"
+                            className="text-base p-2 w-28 lg:w-44 disabled:opacity-70"
                             onClick={postVideo}
                             disabled={isInvalid}
                         >
                             Post
-                        </button>
+                        </CustomButton>
                     </div>
                 </div>
             </div>
