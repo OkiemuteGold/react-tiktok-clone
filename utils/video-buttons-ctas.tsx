@@ -17,13 +17,11 @@ const VideoButtonsCtas = () => {
     };
 
     const muteUnmuteVideo = () => {
-        console.log(videoRef);
+        // console.log(videoRef);
 
         if (isMuted) {
-            // !videoRef.current?.muted;
             setIsMuted(false);
         } else {
-            // videoRef.current?.muted;
             setIsMuted(true);
         }
     };

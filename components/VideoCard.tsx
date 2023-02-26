@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Video } from '@/types'
 import { NextPage } from 'next'
 import Image from 'next/image'
@@ -15,10 +15,13 @@ interface IProps {
 
 const VideoCard: NextPage<IProps> = ({ post }) => {
     // console.log(post);
+    const [isHovered, setIsHovered] = useState(false);
 
     const { videoRef, isPlaying, isMuted, pausePlayVideo, muteUnmuteVideo } = VideoButtonsCtas();
 
-    const [isHovered, setIsHovered] = useState(false);
+    useEffect(() => {
+        if (videoRef.current) videoRef.current.muted = isMuted;
+    }, [isMuted]);
 
     return (
         <div className="flex flex-col border-b-2 border-gray-200 pb-6">

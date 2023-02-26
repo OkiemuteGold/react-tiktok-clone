@@ -138,3 +138,8 @@ module.exports = {
 `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video`
 
 `https://developer.chrome.com/blog/play-returns-promise/`
+
+
+## Other Dependencies
+
+`https://www.npmjs.com/package/classnames`

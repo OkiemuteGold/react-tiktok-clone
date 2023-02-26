@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,7 +23,15 @@ const Detail = ({ postDetails }: IProps) => {
 
     const { videoRef, isPlaying, isMuted, pausePlayVideo, muteUnmuteVideo } = VideoButtons();
 
+    const router = useRouter();
+
     const buttonStyle = "w-full h-full flex justify-center items-center text-white cursor-pointer hover:scale-90 transition-transform duration-75";
+
+    useEffect(() => {
+        if (post && videoRef.current) {
+            videoRef.current.muted = isMuted;
+        }
+    }, [post, isMuted]);
 
     if (!post) return null;
 
@@ -31,8 +39,13 @@ const Detail = ({ postDetails }: IProps) => {
         <div className="flex flex-wrap lg:flex-nowrap w-full absolute left-0 top-0 bg-white">
             {/* bg-blurred-img bg-no-repeat bg-cover bg-center */}
             <div className="relative flex justify-center items-center flex-1 w-[1000px] lg:w-9/12 bg-black">
-                <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50">
-                    <p>
+                <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50" >
+                    <p
+                        className="cursor-pointer"
+                        onClick={() => {
+                            router.back()
+                        }}
+                    >
                         <MdOutlineCancel className="text-white text-[35px]" />
                     </p>
                 </div>
@@ -94,4 +107,4 @@ export const getServerSideProps = async ({
     }
 }
 
-export default Detail
+export default Detail;
