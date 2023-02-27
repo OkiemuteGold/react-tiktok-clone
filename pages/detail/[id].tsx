@@ -13,6 +13,9 @@ import { BASE_URL } from "@/utils";
 import { Video } from "@/types";
 
 import VideoButtons from "@/utils/video-buttons-ctas";
+import useAuthStore from "@/store/authStore";
+import LikeButton from "@/components/LikeButton";
+import Comments from "@/components/Comments";
 
 interface IProps {
     postDetails: Video
@@ -24,6 +27,7 @@ const Detail = ({ postDetails }: IProps) => {
     const { videoRef, isPlaying, isMuted, pausePlayVideo, muteUnmuteVideo } = VideoButtons();
 
     const router = useRouter();
+    const { userProfile }: any = useAuthStore();
 
     const buttonStyle = "w-full h-full flex justify-center items-center text-white cursor-pointer hover:scale-90 transition-transform duration-75";
 
@@ -33,12 +37,22 @@ const Detail = ({ postDetails }: IProps) => {
         }
     }, [post, isMuted]);
 
+    const handleLikeStatus = async (like: boolean) => {
+        if (userProfile) {
+            const response = await axios.put(`${BASE_URL}/api/like`, {
+                userId: userProfile._id,
+                postId: post._id,
+                like
+            });
+        }
+    };
+
     if (!post) return null;
 
     return (
         <div className="flex flex-wrap lg:flex-nowrap w-full absolute left-0 top-0 bg-white">
             {/* bg-blurred-img bg-no-repeat bg-cover bg-center */}
-            <div className="relative flex justify-center items-center flex-1 w-[1000px] lg:w-9/12 bg-black">
+            <div className="relative flex justify-center items-center w-[1000px] lg:w-9/12 bg-black">
                 <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50" >
                     <p
                         className="cursor-pointer"
@@ -56,7 +70,7 @@ const Detail = ({ postDetails }: IProps) => {
                             className="h-[100%]"
                             ref={videoRef}
                             loop
-                            onClick={() => { }}
+                            onClick={pausePlayVideo}
                         >
                             <source src={post.video.asset.url} />
 
@@ -88,6 +102,54 @@ const Detail = ({ postDetails }: IProps) => {
                                 <HiVolumeUp />
                             )}
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <div className="relative w-[1000px] md:w-[900px] lg:[700px]">
+                <div className="mt-10 lg:mt-20 ml-5">
+                    <div className="flex gap-3 p-2 font-semibold rounded">
+                        <div className="md:w-20 md:h-20 w-16 h-16">
+                            <Link href="/">
+                                <span>
+                                    <Image
+                                        src={post.postedBy.image}
+                                        alt={`${post.postedBy.userName} profile photo`}
+                                        width={64}
+                                        height={64}
+                                        className="rounded-full"
+                                    />
+                                </span>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link href="/">
+                                <span className="flex  flex-col justify-center gap-2">
+                                    <span className="flex items-center gap-2 font-bold md:text-base text-primary">
+                                        {post.postedBy.userName}
+                                        <GoVerified className="text-blue-400 text-base" />
+                                    </span>
+                                    <span className="capitalize font-medium text-xs text-gray-500 hidden md:block">
+                                        {post.postedBy.userName}
+                                    </span>
+                                </span>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="p-2 text-lg text-gray-500">
+                        <p>{post.caption}</p>
+
+                        {userProfile && (
+                            <LikeButton
+                                handleLike={() => handleLikeStatus(true)}
+                                handleDisLike={() => handleLikeStatus(false)}
+                            />
+                        )}
+                    </div>
+
+                    <div className="mt-10 p-2 text-lg text-gray-500">
+                        <Comments />
                     </div>
                 </div>
             </div>

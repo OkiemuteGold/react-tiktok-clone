@@ -46,10 +46,10 @@ const Discover = () => {
                                         : topicStyle
                                 }
                             >
-                                <span className="font-bold text-2xl xl:text-md">
+                                <span className="font-bold text-2xl xl:text-base">
                                     {icon}
                                 </span>
-                                <span className="font-medium text-md hidden xl:block capitalize">
+                                <span className="font-medium text-base hidden xl:block capitalize">
                                     {name}
                                 </span>
                             </div>

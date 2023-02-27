@@ -45,7 +45,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                             <span className="flex items-center gap-2">
                                 <span className="flex items-center gap-2 font-bold md:txt-md text-primary">
                                     {post.postedBy.userName}
-                                    <GoVerified className="text-blue-400 text-md" />
+                                    <GoVerified className="text-blue-400 text-base" />
                                 </span>
                                 <span className="capitalize font-medium text-xs text-gray-500 hidden md:block">
                                     {post.postedBy.userName}

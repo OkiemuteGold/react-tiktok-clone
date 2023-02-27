@@ -11,6 +11,13 @@ import { IoMdAdd } from "react-icons/io";
 
 import Logo from '../utils/tiktik-logo.png';
 import useAuthStore from '@/store/authStore';
+import { NextPage } from 'next'
+
+interface IProps {
+    userProfile: any;
+    addUser: any;
+    removeUser: () => void;
+}
 
 const Navbar = () => {
     const [isLoading, setIsLoading] = useState({
@@ -18,7 +25,7 @@ const Navbar = () => {
         message: "",
     });
 
-    const { userProfile, addUser, removeUser } = useAuthStore();
+    const { userProfile, addUser, removeUser }: IProps = useAuthStore();
 
     const setLoadingMessage = (actionType: string, myFunc: any) => {
         if (actionType === 'login') {
@@ -62,7 +69,7 @@ const Navbar = () => {
 
             <div>
                 {isLoading.status ? (
-                    <span className="flex font-semibold text-md">
+                    <span className="flex font-semibold text-base">
                         {isLoading.message}
                     </span>
                 ) : (
