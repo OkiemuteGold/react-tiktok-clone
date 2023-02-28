@@ -52,7 +52,7 @@ const Detail = ({ postDetails }: IProps) => {
     if (!post) return null;
 
     return (
-        <div className="flex flex-wrap lg:flex-nowrap w-full absolute left-0 top-0 bg-white">
+        <div className="flex flex-wrap lg:flex-nowrap w-full absolute left-0 top-0 bg-white overflow-hidden lg:h-[100vh]">
             {/* bg-blurred-img bg-no-repeat bg-cover bg-center */}
             <div className="relative flex justify-center items-center w-[1000px] lg:w-9/12 bg-black">
                 <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50" >
@@ -69,7 +69,7 @@ const Detail = ({ postDetails }: IProps) => {
                 <div className="relative">
                     <div className="lg:h-[100vh] h-[60vh]">
                         <video
-                            className="h-[100%]"
+                            className="h-[100%] cursor-pointer"
                             ref={videoRef}
                             loop
                             onClick={pausePlayVideo}
@@ -108,12 +108,12 @@ const Detail = ({ postDetails }: IProps) => {
                 </div>
             </div>
 
-            <div className="relative w-[1000px] md:w-[900px] lg:[700px]">
-                <div className="mt-10 lg:mt-20 ml-5">
-                    <div className="flex gap-3 p-2 font-semibold rounded">
+            <div className="relative w-[1000px] md:w-[900px] lg:w-[700px] h-[100vh] overflow-hidden">
+                <div className="mt-10 lg:mt-20">
+                    <div className="flex gap-3 p-2 font-semibold rounded ml-5">
                         <div className="md:w-20 md:h-20 w-16 h-16">
                             <Link href="/">
-                                <span>
+                                <>
                                     <Image
                                         src={post.postedBy.image}
                                         alt={`${post.postedBy.userName} profile photo`}
@@ -121,9 +121,10 @@ const Detail = ({ postDetails }: IProps) => {
                                         height={64}
                                         className="rounded-full"
                                     />
-                                </span>
+                                </>
                             </Link>
                         </div>
+
                         <div>
                             <Link href="/">
                                 <span className="flex  flex-col justify-center gap-2">
@@ -139,7 +140,7 @@ const Detail = ({ postDetails }: IProps) => {
                         </div>
                     </div>
 
-                    <div className="p-2 text-lg text-gray-500">
+                    <div className="p-2 text-lg text-gray-500 ml-5">
                         <p>{post.caption}</p>
 
                         {userProfile && (
@@ -151,9 +152,7 @@ const Detail = ({ postDetails }: IProps) => {
                         )}
                     </div>
 
-                    <div className="mt-10 p-2 text-lg text-gray-500">
-                        <Comments />
-                    </div>
+                    <Comments />
                 </div>
             </div>
         </div>
