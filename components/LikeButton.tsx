@@ -6,12 +6,21 @@ import useAuthStore from '@/store/authStore';
 interface IProps {
     handleLike: () => void;
     handleDisLike: () => void;
+    likes: any[];
 }
 
-const LikeButton = ({ handleLike, handleDisLike }: IProps) => {
-    const [alreadyLiked, setAlreadyLiked] = useState(true);
+const LikeButton = ({ handleLike, handleDisLike, likes }: IProps) => {
+    const [alreadyLiked, setAlreadyLiked] = useState(false);
 
-    const { userProfile } = useAuthStore();
+    const { userProfile }: any = useAuthStore();
+
+    const filteredLikes = likes?.filter(like => like._ref === userProfile._id);
+
+    useEffect(() => {
+        filteredLikes?.length > 0
+            ? setAlreadyLiked(true)
+            : setAlreadyLiked(false);
+    }, [likes, filteredLikes]);
 
     return (
         <div className="gap-6">
@@ -27,7 +36,7 @@ const LikeButton = ({ handleLike, handleDisLike }: IProps) => {
                 )}
 
                 <p className="ml-2 font-semibold">
-                    Like?.length || 0
+                    {likes?.length || 0}
                 </p>
             </div>
         </div>

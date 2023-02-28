@@ -39,11 +39,13 @@ const Detail = ({ postDetails }: IProps) => {
 
     const handleLikeStatus = async (like: boolean) => {
         if (userProfile) {
-            const response = await axios.put(`${BASE_URL}/api/like`, {
+            const { data } = await axios.put(`${BASE_URL}/api/like`, {
                 userId: userProfile._id,
                 postId: post._id,
                 like
             });
+
+            setPost({ ...post, likes: data.likes });
         }
     };
 
@@ -55,7 +57,7 @@ const Detail = ({ postDetails }: IProps) => {
             <div className="relative flex justify-center items-center w-[1000px] lg:w-9/12 bg-black">
                 <div className="absolute top-6 left-2 lg:left-6 flex gap-6 z-50" >
                     <p
-                        className="cursor-pointer"
+                        className="cursor-pointer rounded-full shadow bg-black"
                         onClick={() => {
                             router.back()
                         }}
@@ -142,6 +144,7 @@ const Detail = ({ postDetails }: IProps) => {
 
                         {userProfile && (
                             <LikeButton
+                                likes={post.likes}
                                 handleLike={() => handleLikeStatus(true)}
                                 handleDisLike={() => handleLikeStatus(false)}
                             />
