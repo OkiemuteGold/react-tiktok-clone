@@ -16,6 +16,10 @@ const LikeButton = ({ handleLike, handleDisLike, likes }: IProps) => {
 
     const filteredLikes = likes?.filter(like => like._ref === userProfile._id);
 
+    const handleLikeAndDisLike = () => {
+        alreadyLiked ? handleDisLike() : handleLike();
+    };
+
     useEffect(() => {
         filteredLikes?.length > 0
             ? setAlreadyLiked(true)
@@ -25,7 +29,7 @@ const LikeButton = ({ handleLike, handleDisLike, likes }: IProps) => {
     return (
         <div className="gap-6">
             <div className="mt-5 flex items-center">
-                {alreadyLiked ? (
+                {/* {alreadyLiked ? (
                     <div className="bg-primary rounded-full p-2 md:p-4 text-[#f51997] cursor-pointer" onClick={handleDisLike}>
                         <MdFavorite className="text-lg md:text-2xl" />
                     </div>
@@ -33,7 +37,15 @@ const LikeButton = ({ handleLike, handleDisLike, likes }: IProps) => {
                     <div className="bg-primary rounded-full p-2 md:p-4 cursor-pointer" onClick={handleLike}>
                         <MdFavorite className="text-lg md:text-2xl" />
                     </div>
-                )}
+                )} */}
+
+                <div className={`${alreadyLiked ? 'text-[#f51997] ' : ''}bg-primary rounded-full p-2 md:p-4 cursor-pointer`} onClick={handleLikeAndDisLike}>
+                    {alreadyLiked ? (
+                        <MdFavorite className="text-lg md:text-2xl" />
+                    ) : (
+                        <MdFavorite className="text-lg md:text-2xl" />
+                    )}
+                </div>
 
                 <p className="ml-2 font-semibold">
                     {likes?.length || 0}
