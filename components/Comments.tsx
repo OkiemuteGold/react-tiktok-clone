@@ -34,6 +34,18 @@ const Comments = ({
 }: IProps) => {
     const { userProfile, allUsers }: any = useAuthStore();
 
+    // const allComments = comments.map((userComment) => {
+    //     let commentObj: { user: IUser; userComment: IComment; };
+
+    //     return allUsers.map((user: IUser) => {
+    //         if (user._id === (userComment.postedBy._id || userComment.postedBy._ref)) {
+    //             return commentObj = { user, userComment };
+    //         }
+    //     });
+    // })
+
+    // console.log(allComments);
+
     return (
         <div>
             <div className="border-y-2 border-gray-200 bg-[#f8f8f8] mt-5 px-7 pt-7 pb-[100] lg:pb-7">
