@@ -68,6 +68,8 @@ If already set up (coupon: https://www.sanity.io/freecodecamp)
 
 `https://www.sanity.io/docs/how-queries-work`
 
+`https://react-icons.github.io/react-icons`
+
 `https://tailwindcss.com/docs/guides/nextjs`
 
 `https://www.npmjs.com/package/@adaaugusta/react-google-login` (--Deprecated)

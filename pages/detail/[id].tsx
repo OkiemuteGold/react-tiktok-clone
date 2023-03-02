@@ -24,6 +24,9 @@ interface IProps {
 const Detail = ({ postDetails }: IProps) => {
     const [post, setPost] = useState(postDetails);
 
+    const [isPostingComment, setIsPostingComment] = useState(false);
+    const [comment, setComment] = useState("");
+
     const { videoRef, isPlaying, isMuted, pausePlayVideo, muteUnmuteVideo } = VideoButtons();
 
     const router = useRouter();
@@ -46,6 +49,24 @@ const Detail = ({ postDetails }: IProps) => {
             });
 
             setPost({ ...post, likes: data.likes });
+        }
+    };
+
+    const submitComment = async (e: any) => {
+        e.preventDefault();
+
+        if (userProfile && comment) {
+            setIsPostingComment(true);
+
+            const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+                userId: userProfile._id,
+                comment
+            });
+
+            setPost({ ...post, comments: data.comments });
+
+            setComment("");
+            setIsPostingComment(false);
         }
     };
 
@@ -108,8 +129,8 @@ const Detail = ({ postDetails }: IProps) => {
                 </div>
             </div>
 
-            <div className="relative w-[1000px] md:w-[900px] lg:w-[700px] h-[100vh] overflow-hidden">
-                <div className="mt-10 lg:mt-20">
+            <div className="relative w-[1000px] md:w-[900px] lg:w-[700px] h-[100vh] overflow-y-auto">
+                <div className="mt-10">
                     <div className="flex gap-3 p-2 font-semibold rounded ml-5">
                         <div className="md:w-20 md:h-20 w-16 h-16">
                             <Link href="/">
@@ -152,7 +173,13 @@ const Detail = ({ postDetails }: IProps) => {
                         )}
                     </div>
 
-                    <Comments />
+                    <Comments
+                        isPostingComment={isPostingComment}
+                        comment={comment}
+                        setComment={setComment}
+                        submitComment={submitComment}
+                        comments={post.comments}
+                    />
                 </div>
             </div>
         </div>
