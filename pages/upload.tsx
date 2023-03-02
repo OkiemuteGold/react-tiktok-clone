@@ -59,7 +59,7 @@ const Upload = () => {
                     setVideoAsset(data);
                 })
                 .catch((error) => {
-                    console.log(error);
+                    // console.log(error);
                     setIsLoading(false);
 
                     setUploadError({
@@ -99,7 +99,7 @@ const Upload = () => {
 
             await axios.post(`${BASE_URL}/api/post`, videoDocument);
 
-            console.log(videoDocument);
+            // console.log(videoDocument);
 
             clearFields();
 

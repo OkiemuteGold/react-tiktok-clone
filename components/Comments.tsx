@@ -5,6 +5,7 @@ import { GoVerified } from "react-icons/go";
 
 import useAuthStore from "@/store/authStore";
 import NoResult from "./NoResult";
+import { IUser } from "@/types";
 
 interface IProps {
     isPostingComment: boolean;
@@ -31,14 +32,51 @@ const Comments = ({
     submitComment,
     comments,
 }: IProps) => {
-    const { userProfile }: any = useAuthStore();
+    const { userProfile, allUsers }: any = useAuthStore();
 
     return (
         <div>
             <div className="border-y-2 border-gray-200 bg-[#f8f8f8] mt-5 px-7 pt-7 pb-[100] lg:pb-7">
                 <div className="overflow-y-scroll lg:h-[175px]">
-                    {comments.length ? (
-                        <h2>{comment}</h2>
+                    {comments?.length ? (
+                        comments.map((item, index) => (
+                            <>
+                                {allUsers.map((user: IUser) => (
+                                    user._id === (item.postedBy._id || item.postedBy._ref) && (
+                                        <div className="p-2 items-center" key={index}>
+                                            <Link href={`/profile/${user._id}`}>
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-8 h-8">
+                                                        <Image
+                                                            src={user.image}
+                                                            alt={user.userName}
+                                                            width={34}
+                                                            height={34}
+                                                            className="rounded-full"
+                                                        />
+                                                    </div>
+
+                                                    <div className="hidden xl:block">
+                                                        <p className="flex gap-1 items-center font-bold text-primary lowercase">
+                                                            {user.userName.replaceAll(' ', '')}
+                                                            <GoVerified className="text-blue-400" />
+                                                        </p>
+
+                                                        <p className="text-gray-400 text-xs capitalize">
+                                                            {user.userName}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+
+                                            <div className="mt-3">
+                                                <p>{item.comment}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                ))}
+                            </>
+                        ))
                     ) : (
                         <NoResult text="No comments yet" />
                     )}
