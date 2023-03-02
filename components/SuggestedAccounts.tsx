@@ -25,8 +25,8 @@ const SuggestedAccounts = () => {
             <div>
                 {users.map((user: IUser) => (
                     <Link href={`/profile/${user._id}`} key={user._id}>
-                        <span className="flex gap-3 hover:bg-primary p-2 font-semibold rounded cursor-pointer">
-                            <span className="w-8 h-8">
+                        <div className="flex items-center gap-3 hover:bg-primary p-2 font-semibold rounded cursor-pointer">
+                            <div className="w-8 h-8">
                                 <Image
                                     src={user.image}
                                     alt={user.userName}
@@ -34,8 +34,19 @@ const SuggestedAccounts = () => {
                                     height={34}
                                     className="rounded-full"
                                 />
-                            </span>
-                        </span>
+                            </div>
+
+                            <div className="hidden xl:block">
+                                <p className="flex gap-1 items-center font-bold text-primary lowercase">
+                                    {user.userName.replaceAll(' ', '')}
+                                    <GoVerified className="text-blue-400" />
+                                </p>
+
+                                <p className="text-gray-400 text-xs capitalize">
+                                    {user.userName}
+                                </p>
+                            </div>
+                        </div>
                     </Link>
                 ))}
             </div>
