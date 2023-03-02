@@ -28,9 +28,9 @@ const Discover = () => {
 
     return (
         <div className="xl:border-b-2 xl:border-gray-200 pb-6">
-            <p className="text-gray-500 font-semibold m-3 mt-4 hidden xl:block">
+            <h2 className="text-base text-gray-500 font-semibold m-3 mt-4 hidden xl:block">
                 Popular Topics
-            </p>
+            </h2>
 
             <div className="flex flex-wrap gap-3">
                 {topics.map((topic) => {
