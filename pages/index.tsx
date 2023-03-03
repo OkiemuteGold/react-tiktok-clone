@@ -13,7 +13,7 @@ interface IProps {
 }
 
 export default function Home({ videos }: IProps) {
-    console.log(videos);
+    // console.log(videos);
 
     return (
         <>
@@ -42,8 +42,6 @@ export default function Home({ videos }: IProps) {
 export const getServerSideProps = async () => {
     const response = await axios.get(`${BASE_URL}/api/post`);
     const { data } = response;
-
-    // console.log(response.data);
 
     return {
         props: {

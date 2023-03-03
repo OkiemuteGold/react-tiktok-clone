@@ -56,7 +56,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                 </div>
             </div>
 
-            <div className="lg:ml-20 flex gap-4">
+            <div className="lg:ml-20 mt-4 flex gap-4">
                 <div
                     className="rounded-3xl relative"
                     onMouseEnter={() => setIsHovered(true)}
