@@ -39,13 +39,23 @@ export default function Home({ videos }: IProps) {
     );
 }
 
-export const getServerSideProps = async () => {
-    const response = await axios.get(`${BASE_URL}/api/post`);
-    const { data } = response;
+export const getServerSideProps = async ({
+    query: { topic }
+}: {
+    query: { topic: string }
+}) => {
+    let response = null;
+
+    if (topic) {
+        console.log(topic);
+        response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
+    } else {
+        response = await axios.get(`${BASE_URL}/api/post`);
+    }
 
     return {
         props: {
-            videos: data
+            videos: response.data
         }
     }
 }

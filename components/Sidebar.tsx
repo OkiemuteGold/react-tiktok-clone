@@ -21,7 +21,7 @@ const Sidebar = () => {
 
     const normalLink = "flex items-center justify-center xl:justify-start gap-3 p-3 text-[#f51997] hover:bg-primary rounded font-semibold cursor-pointer";
 
-    const googleLoginButtonStyle = "cursor-pointer text-lg bg-white text-[#f51997] border-[1px] border-[#f51997] hover:bg-[#f51997] hover:text-white outline-none rounded-md font-semibold px-6 p-3 mt-3 w-full"
+    // const googleLoginButtonStyle = "cursor-pointer text-lg bg-white text-[#f51997] border-[1px] border-[#f51997] hover:bg-[#f51997] hover:text-white outline-none rounded-md font-semibold px-6 p-3 mt-3 w-full"
 
     return (
         <div>
