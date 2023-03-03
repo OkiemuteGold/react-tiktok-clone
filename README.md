@@ -145,3 +145,9 @@ module.exports = {
 ## Other Dependencies
 
 `https://www.npmjs.com/package/classnames`
+
+## ES Lint Error While Building for Deployment
+
+`https://nextjs.org/docs/basic-features/eslint#disabling-rules`
+
+`Updated "rules" in .eslintrc with "react/no-unescaped-entities": "off",`
