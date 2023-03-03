@@ -133,7 +133,7 @@ const Detail = ({ postDetails }: IProps) => {
                 <div className="mt-10">
                     <div className="flex gap-3 p-2 font-semibold rounded ml-5">
                         <div className="md:w-20 md:h-20 w-16 h-16">
-                            <Link href="/">
+                            <Link href={`/profile/${post.postedBy._id}`}>
                                 <>
                                     <Image
                                         src={post.postedBy.image}
@@ -147,7 +147,7 @@ const Detail = ({ postDetails }: IProps) => {
                         </div>
 
                         <div>
-                            <Link href="/">
+                            <Link href={`/profile/${post.postedBy._id}`}>
                                 <span className="flex  flex-col justify-center gap-2">
                                     <span className="flex items-center gap-2 font-bold md:text-base text-primary">
                                         {post.postedBy.userName}
