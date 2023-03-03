@@ -8,7 +8,7 @@ const Discover = () => {
     const router = useRouter();
     const { topic } = router.query;
 
-    console.log(topic);
+    // console.log(topic);
 
     const topicStyle =
         "xl:border-2 hover:bg-primary px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer";
