@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { createOrGetUser } from '@/utils';
 import { AiOutlineLogout } from "react-icons/ai";
 
-import { BiSearch } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 
 import Logo from '../utils/tiktik-logo.png';
 import useAuthStore from '@/store/authStore';
 import { NextPage } from 'next'
+
+import Search from './Search';
 
 interface IProps {
     userProfile: any;
@@ -65,7 +65,7 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            <div>Search</div>
+            <Search />
 
             <div>
                 {isLoading.status ? (
@@ -87,7 +87,7 @@ const Navbar = () => {
                                 </Link>
 
                                 {userProfile.image && (
-                                    <Link href="/profile">
+                                    <Link href={`/profile/${userProfile._id}`} key={userProfile._id}>
                                         <span>
                                             <Image
                                                 src={userProfile.image}

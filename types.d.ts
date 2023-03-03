@@ -35,3 +35,7 @@ export interface IUser {
     userName: string;
     image: string;
 }
+
+export interface PreventDefault {
+    preventDefault: () => void
+}

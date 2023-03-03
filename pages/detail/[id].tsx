@@ -10,7 +10,7 @@ import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 
 import axios from "axios";
 import { BASE_URL } from "@/utils";
-import { Video } from "@/types";
+import { PreventDefault, Video } from "@/types";
 
 import VideoButtons from "@/utils/video-buttons-ctas";
 import useAuthStore from "@/store/authStore";
@@ -52,7 +52,7 @@ const Detail = ({ postDetails }: IProps) => {
         }
     };
 
-    const submitComment = async (e: any) => {
+    const submitComment = async (e: PreventDefault) => {
         e.preventDefault();
 
         if (userProfile && comment) {

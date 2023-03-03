@@ -28,7 +28,7 @@ const Profile = ({ profileDetails }: IProps) => {
 
     useEffect(() => {
         showUserVideos ? setVideoList(userVideos) : setVideoList(userLikedVideos);
-    }, [showUserVideos, userVideos, userLikedVideos])
+    }, [showUserVideos, userVideos, userLikedVideos]);
 
     return (
         <div className="w-full mt-2">
@@ -49,7 +49,7 @@ const Profile = ({ profileDetails }: IProps) => {
                         <GoVerified className="text-blue-400" />
                     </p>
 
-                    <p className="text-gray-400 text-sm md:text-lg capitalize">
+                    <p className="text-gray-400 text-sm md:text-base capitalize">
                         {user.userName}
                     </p>
                 </div>
