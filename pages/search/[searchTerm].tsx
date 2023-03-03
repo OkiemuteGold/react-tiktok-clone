@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import VideoCard from "@/components/VideoCard";
 import NoResult from "@/components/NoResult";
@@ -12,7 +13,12 @@ import { IUser, Video } from "@/types";
 
 const Search = ({ videos }: { videos: Video[] }) => {
     const [isResultAccounts, setIsResultAccounts] = useState(false);
+
     const active = "border-b-2 border-black";
+
+    const router = useRouter();
+    const { searchTerm } = router.query;
+    // console.log(router);
 
     return (
         <div className="w-full">
@@ -35,8 +41,14 @@ const Search = ({ videos }: { videos: Video[] }) => {
             {isResultAccounts ? (
                 <div>Accounts</div>
             ) : (
-                <div>
-                    Videos
+                <div className="flex flex-wrap gap-6 md:justify-start md:mt-10">
+                    {videos.length > 0 ? (
+                        videos.map((video: Video, index: number) => (
+                            <VideoCard post={video} key={index} />
+                        ))
+                    ) : (
+                        <NoResult text={`No video results for ${searchTerm}`} />
+                    )}
                 </div>
             )}
         </div>
