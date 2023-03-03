@@ -9,7 +9,6 @@ import { IoMdAdd } from "react-icons/io";
 
 import Logo from '../utils/tiktik-logo.png';
 import useAuthStore from '@/store/authStore';
-import { NextPage } from 'next'
 
 import Search from './Search';
 
@@ -52,6 +51,8 @@ const Navbar = () => {
         }
         setLoadingMessage(actionType, handleLogout);
     };
+
+    // const googleLoginButtonStyle = "cursor-pointer text-lg bg-white text-[#f51997] border-[1px] border-[#f51997] hover:bg-[#f51997] hover:text-white outline-none rounded-md font-semibold px-6 p-3 mt-3 w-full"
 
     return (
         <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
