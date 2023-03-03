@@ -23,7 +23,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         if (videoRef.current) {
             videoRef.current.muted = isMuted;
         }
-    }, [isMuted]);
+    }, [isMuted, videoRef]);
 
     return (
         <div className="flex flex-col border-b-2 border-gray-200 pb-6">
@@ -72,9 +72,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                         >
                             <source src={post.video.asset.url} type="video/mp4" />
 
-                            <p>
+                            <span>
                                 Your browser doesn't support HTML5 video.
-                            </p>
+                            </span>
                         </video>
                     </Link>
 

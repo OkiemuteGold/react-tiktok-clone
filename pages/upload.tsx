@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 
-import { FaCloudUploadAlt, FaArrowLeft } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { FaCloudUploadAlt } from "react-icons/fa";
+// import { MdDelete } from "react-icons/md";
 
 import axios from "axios";
 import useAuthStore from "@/store/authStore";
@@ -27,7 +27,7 @@ const Upload = () => {
 
     const [caption, setCaption] = useState("");
     const [category, setCategory] = useState(defaultCategory);
-    const [isSavingPost, setIsSavingPost] = useState(false);
+    // const [isSavingPost, setIsSavingPost] = useState(false);
 
     const isInvalid = !caption || !category || !videoAsset;
 
@@ -77,7 +77,7 @@ const Upload = () => {
 
     const postVideo = async () => {
         if (caption && videoAsset?._id && category) {
-            setIsSavingPost(true);
+            // setIsSavingPost(true);
 
             const videoDocument = {
                 _type: "post",

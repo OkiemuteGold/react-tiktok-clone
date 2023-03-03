@@ -38,7 +38,7 @@ const Detail = ({ postDetails }: IProps) => {
         if (post && videoRef.current) {
             videoRef.current.muted = isMuted;
         }
-    }, [post, isMuted]);
+    }, [post, isMuted, videoRef]);
 
     const handleLikeStatus = async (like: boolean) => {
         if (userProfile) {
