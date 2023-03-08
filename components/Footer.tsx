@@ -37,7 +37,7 @@ const Footer = () => {
             <List items={footerList2} mt />
             <List items={footerList3} mt />
 
-            <p className="mt-5 text-gray-400 text-sm">Copyright@<span>{footerYear}</span> <span className="text-[#f51997]">OG</span> TikTik</p>
+            <p className="mt-5 text-gray-400 text-sm">Copyright@<span>{footerYear}</span> <a href="https://github.com/OkiemuteGold" target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2 decoration-dotted">OGold</a></p>
         </div>
     );
 };

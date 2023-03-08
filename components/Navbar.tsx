@@ -55,7 +55,7 @@ const Navbar = () => {
     // const googleLoginButtonStyle = "cursor-pointer text-lg bg-white text-[#f51997] border-[1px] border-[#f51997] hover:bg-[#f51997] hover:text-white outline-none rounded-md font-semibold px-6 p-3 mt-3 w-full"
 
     return (
-        <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 px-4">
+        <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 lg:py-3 px-4">
             <Link href="/">
                 <div className="w-[100px] md:w-[130px]">
                     <Image
@@ -74,14 +74,14 @@ const Navbar = () => {
                         {isLoading.message}
                     </span>
                 ) : (
-                    <div>
+                    <>
                         {userProfile ? (
-                            <div className="flex items-center gap-5 md:gap-10">
+                            <div className="flex items-center gap-4 md:gap-8 lg:gap-10">
                                 <Link href="/upload">
-                                    <span className="flex items-center gap-2 border-2 py-0.5 px-2 md:px-4 text-base font-semibold rounded hover:border-gray-300">
+                                    <span className="flex items-center gap-2 border-2 py-0.5 px-2 md:px-4 text-base font-semibold rounded hover:border-gray-300" aria-label="Upload video">
                                         <IoMdAdd className="text-xl" />
 
-                                        <span className="hidden md:inline-flex">
+                                        <span className="hidden sm:inline-flex">
                                             Upload
                                         </span>
                                     </span>
@@ -121,7 +121,7 @@ const Navbar = () => {
                                 }}
                             />
                         )}
-                    </div>
+                    </>
                 )}
             </div>
         </div>
