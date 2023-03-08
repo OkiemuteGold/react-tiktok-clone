@@ -55,7 +55,7 @@ const Navbar = () => {
     // const googleLoginButtonStyle = "cursor-pointer text-lg bg-white text-[#f51997] border-[1px] border-[#f51997] hover:bg-[#f51997] hover:text-white outline-none rounded-md font-semibold px-6 p-3 mt-3 w-full"
 
     return (
-        <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 lg:py-3 px-4">
+        <div className="w-full flex justify-between items-center border-b-2 border-gray-200 py-2 lg:py-3 px-3 md:px-4">
             <Link href="/">
                 <div className="w-[100px] md:w-[130px]">
                     <Image
