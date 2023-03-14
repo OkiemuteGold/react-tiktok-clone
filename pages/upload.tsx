@@ -108,7 +108,7 @@ const Upload = () => {
     };
 
     return (
-        <div className="flex w-full h-full absolute left-0 top-[58px] justify-center bg-[#f8f8f8] md:py-10">
+        <div className="flex w-full h-full absolute left-0 top-[52px] justify-center bg-[#f8f8f8] md:py-10">
             <div className="flex justify-center md:justify-between xl:justify-evenly items-center flex-wrap gap-6 xl:gap-8 p-14 md:p-10 w-[100%] md:w-[90%] lg:w-[80%] xl:w-[60%] mx-auto xl:h-[80vh] bg-white rounded-lg overflow-y-auto">
                 <div>
                     <div>
