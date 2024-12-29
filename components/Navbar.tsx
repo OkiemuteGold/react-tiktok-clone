@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useRouter } from "next/router";
 import Image from 'next/image'
 import Link from 'next/link'
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
@@ -19,6 +20,7 @@ interface IProps {
 }
 
 const Navbar = () => {
+    const router = useRouter();
     const [isLoading, setIsLoading] = useState({
         status: false,
         message: "",
@@ -36,6 +38,7 @@ const Navbar = () => {
         setTimeout(() => {
             myFunc();
             setIsLoading({ status: false, message: "" });
+            router.push("/");
         }, 1000);
     }
 
@@ -77,7 +80,8 @@ const Navbar = () => {
                     <>
                         {userProfile ? (
                             <div className="flex items-center gap-4 md:gap-8 lg:gap-10">
-                                <Link href="/upload">
+                                {/* /upload */}
+                                <Link href="/">
                                     <span className="flex items-center gap-2 border-2 py-0.5 px-2 md:px-4 text-base font-semibold rounded hover:border-gray-300" aria-label="Upload video">
                                         <IoMdAdd className="text-xl" />
 

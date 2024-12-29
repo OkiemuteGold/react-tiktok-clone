@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 import { FaCloudUploadAlt } from "react-icons/fa";
 // import { MdDelete } from "react-icons/md";
 
-import axios from "axios";
+// import axios from "axios";
 import useAuthStore from "@/store/authStore";
 import { client } from "@/utils/client";
 import { SanityAssetDocument } from "@sanity/client";
 
 import { topics } from "@/utils/constants";
-import { BASE_URL } from "@/utils";
+// import { BASE_URL } from "@/utils";
 
 import { GoBackBtn, UtilityBtns } from "@/utils/UtilityButtons";
 
@@ -29,10 +29,10 @@ const Upload = () => {
     const [category, setCategory] = useState(defaultCategory);
     // const [isSavingPost, setIsSavingPost] = useState(false);
 
-    const isInvalid = !caption || !category || !videoAsset;
+    // const isInvalid = !caption || !category || !videoAsset;
 
     const { userProfile }: any = useAuthStore();
-    const router = useRouter();
+    // const router = useRouter();
 
     const { CustomButton } = UtilityBtns();
 
@@ -96,14 +96,13 @@ const Upload = () => {
                     _ref: userProfile?._id
                 }
             }
+            console.log(videoDocument.caption);
+            return;
 
-            await axios.post(`${BASE_URL}/api/post`, videoDocument);
+            // await axios.post(`${BASE_URL}/api/post`, videoDocument);
 
-            // console.log(videoDocument);
-
-            clearFields();
-
-            router.push("/");
+            // clearFields();
+            // router.push("/");
         }
     };
 
@@ -265,7 +264,8 @@ const Upload = () => {
                             btnType="primary"
                             className="text-base p-2 w-28 lg:w-44 disabled:opacity-70"
                             onClick={postVideo}
-                            disabled={isInvalid}
+                            // disabled={isInvalid}
+                            disabled
                         >
                             Post
                         </CustomButton>
